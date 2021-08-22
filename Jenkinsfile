@@ -20,4 +20,5 @@ node('master') {
         archive 'target/*.jar'
     }
     
+    
 }
