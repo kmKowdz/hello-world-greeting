@@ -11,7 +11,10 @@ node('master') {
     }
     
     stage('Static Code Analysis') { 
-        sh 'mvn clean verify sonar:sonar -Dsonar.projectName=jenkins-sonarqube-demo -Dsonar.projectKey=jenkins-sonarqube-demo -Dsonar.projectVersion=$BUILD_NUMBER';
+        sh 'mvn clean verify sonar:sonar 
+        -Dsonar.projectName=jenkins-sonarqube-demo 
+        -Dsonar.projectKey=jenkins-sonarqube-demo 
+        -Dsonar.projectVersion=$BUILD_NUMBER';
     } 
     
     stage ('Integration Test') {
@@ -19,6 +22,5 @@ node('master') {
         junit '**/target/failsafe-reports/TEST-*.xml' 
         archive 'target/*.jar'
     }
-    
     
 }
